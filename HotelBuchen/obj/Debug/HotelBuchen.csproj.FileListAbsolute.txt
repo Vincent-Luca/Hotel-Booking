@@ -1,0 +1,11 @@
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\bin\Debug\HotelBuchen.exe.config
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\bin\Debug\HotelBuchen.exe
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\bin\Debug\HotelBuchen.pdb
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.AssemblyReference.cache
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.SuggestedBindingRedirects.cache
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.Form1.resources
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.Properties.Resources.resources
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.GenerateResource.cache
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.CoreCompileInputs.cache
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.exe
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.pdb
