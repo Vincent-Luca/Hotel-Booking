@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HotelBuchen
 {
-    internal class kunden
+    public class kunden
     {
-        public int ID { get; set; }
+        public int id { get; set; }
         public string Name { get; set; }
         public string Passwort { get; set; }
         public bool Admin { get; set; }

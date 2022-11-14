@@ -9,3 +9,4 @@ E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.CoreCompileInputs.cache
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.exe
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.pdb
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.main.resources
