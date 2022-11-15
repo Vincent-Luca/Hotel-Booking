@@ -10,3 +10,15 @@ E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.exe
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.pdb
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.main.resources
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\bin\Debug\HotelBuchen.exe.config
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\bin\Debug\HotelBuchen.exe
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\bin\Debug\HotelBuchen.pdb
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.AssemblyReference.cache
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.SuggestedBindingRedirects.cache
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.Form1.resources
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.main.resources
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.Properties.Resources.resources
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.GenerateResource.cache
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.CoreCompileInputs.cache
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.exe
+C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.pdb

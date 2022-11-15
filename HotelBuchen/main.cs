@@ -34,32 +34,38 @@ namespace HotelBuchen
 
             for (int i = 1; i < columns.GetLength(1); i++)
             {
-                dataGridView1.Columns.Add(i.ToString(), columns[0,i]);
-                if (columns[1,i] != "string")
+                if (!columns[1,i].Contains("string"))
                 {
-                    if (columns[1,i].ToLower() == "boolean")
+                    if (columns[1,i].ToLower().Contains("boolean"))
                     {
-                        dataGridView1.Columns[i.ToString()].ValueType = typeof(bool);
+                        dataGridView1.Columns.Add(new DataGridViewCheckBoxColumn { Name = i.ToString(), HeaderText = columns[0,i] });
+                        continue;
                     }
 
                 }
+                 dataGridView1.Columns.Add(i.ToString(), columns[0, i]);
             }
 
-            //string[,] temp = _form.db.getItem("Select * from Wohnungen;", "Wohnungen");
+            string[,] temp = _form.db.getItem("Select * from Wohnungen;", "Wohnungen");
 
-            //for (int i = 0; i < temp.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < temp.GetLength(1); j++)
-            //    {
-            //        dataGridView1.Rows[i].Cells[j].Value = temp[i,j];
-            //    }
-            //}
+            for (int i = 0; i < temp.GetLength(0); i++)
+            {
+                for (int j = 0; j < temp.GetLength(1); j++)
+                {
+                    dataGridView1.Rows[i].Cells[j].Value = temp[i, j];
+                }
+            }
         }
 
         private void main_FormClosing(object sender, FormClosingEventArgs e)
         {
             _form.db.CloseDatabase();
             Environment.Exit(1);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
