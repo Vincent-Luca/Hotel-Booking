@@ -40,7 +40,7 @@ namespace HotelBuchen
                             k.id = Convert.ToInt32(kunde[i, 0]);
                             k.Name = kunde[1, i];
                             k.Passwort = kunde[2, i];
-                            k.Admin = Convert.ToBoolean(kunde[2,i]);
+                            //k.Admin = Convert.ToBoolean(kunde[2,i]);
 
                             main main = new main(this,k);
                             main.Show();

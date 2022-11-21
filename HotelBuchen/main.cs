@@ -16,6 +16,9 @@ namespace HotelBuchen
         private Form1 _form = null;
 
         private kunden kunde = null;
+
+        List<Hotel> hotels = new List<Hotel>();
+
         public main(Form1 form, kunden kunde)
         {
             InitializeComponent();
@@ -27,33 +30,19 @@ namespace HotelBuchen
 
         private void getAllHotels()
         {
-            dataGridView1.Columns.Clear();
-
-
-            string[,] columns = _form.db.getColumnNames("Wohnungen");
-
-            for (int i = 1; i < columns.GetLength(1); i++)
-            {
-                if (!columns[1,i].Contains("string"))
-                {
-                    if (columns[1,i].ToLower().Contains("boolean"))
-                    {
-                        dataGridView1.Columns.Add(new DataGridViewCheckBoxColumn { Name = i.ToString(), HeaderText = columns[0,i] });
-                        continue;
-                    }
-
-                }
-                 dataGridView1.Columns.Add(i.ToString(), columns[0, i]);
-            }
-
             string[,] temp = _form.db.getItem("Select * from Wohnungen;", "Wohnungen");
 
-            for (int i = 0; i < temp.GetLength(0); i++)
+            for (int i = 0; i < temp.GetLength(1); i++)
             {
-                for (int j = 0; j < temp.GetLength(1); j++)
-                {
-                    dataGridView1.Rows[i].Cells[j].Value = temp[i, j];
-                }
+                Hotel h = new Hotel();
+                h.ID = int.Parse(temp[0, i]);
+                h.Name = temp[1, i];
+                h.Ort = temp[2, i];
+                h.cost = int.Parse(temp[3, i]);
+                h.familyfriendly = bool.Parse(temp[4, i]);
+                h.Wlan = bool.Parse(temp[5, i]);
+                h.Rauchen = bool.Parse(temp[6, i]);
+                h.Pets = bool.Parse(temp[7,i]);
             }
         }
 
@@ -61,11 +50,6 @@ namespace HotelBuchen
         {
             _form.db.CloseDatabase();
             Environment.Exit(1);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

@@ -47,12 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Databank.cs" />
+    <Compile Include="Eintrag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eintrag.Designer.cs">
+      <DependentUpon>Eintrag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hotel.cs" />
     <Compile Include="kunden.cs" />
     <Compile Include="main.cs">
       <SubType>Form</SubType>
