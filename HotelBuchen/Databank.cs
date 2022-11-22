@@ -14,13 +14,14 @@ namespace HotelBuchen
 {
     public class Databank
     {
-        private readonly string workingDirectory = Environment.CurrentDirectory;
-        private string dir;
-        private readonly OleDbConnection con;
+        private readonly string workingDirectory;
+        private readonly string dir;
+        private readonly OleDbConnection _con;
         private readonly OleDbCommand _command;
         private OleDbDataReader reader;
         public Databank(string datenbankName)
         {
+            workingDirectory = Environment.CurrentDirectory;
             dir = Directory.GetParent(workingDirectory).Parent.FullName;
             _command = new OleDbCommand();
 
@@ -32,9 +33,9 @@ namespace HotelBuchen
             else
             {
                 dir = Path.Combine(dir, datenbankName);
-                con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + dir);
-                _command.Connection = con;
-                con.Open();
+                _con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + dir);
+                _command.Connection = _con;
+                _con.Open();
             }
         }
 
@@ -69,6 +70,7 @@ namespace HotelBuchen
             _command.CommandText = SQLAbfrage;
             reader = _command.ExecuteReader();
             string[,] temp = new string[rowcount, reader.FieldCount];
+
             int j = 0;
             while (reader.Read())
             {
@@ -87,7 +89,7 @@ namespace HotelBuchen
         public void CloseDatabase()
         {
             _command.Connection.Close();
-            con.Close();
+            _con.Close();
         }
     }
 }

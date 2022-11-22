@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelBuchen
 {
-    internal class Hotel
+    public class Hotel
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -16,10 +16,5 @@ namespace HotelBuchen
         public bool Wlan { get; set; }
         public bool Rauchen { get; set; }
         public bool Pets { get; set; }
-
-        public Hotel()
-        {
-
-        }
     }
 }
