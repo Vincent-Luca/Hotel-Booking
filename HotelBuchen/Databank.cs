@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelBuchen.Datasets;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -54,6 +55,23 @@ namespace HotelBuchen
             return temp;
         }
 
+        public List<Bewertung> GetBewertungs(string sql)
+        {
+            _command.CommandText = sql;
+            reader = _command.ExecuteReader();
+            List<Bewertung> temp = new List<Bewertung>();
+
+            while (reader.Read())
+            {
+                Bewertung b = new Bewertung(Convert.ToInt32(reader.GetValue(0).ToString()), Convert.ToInt32(reader.GetValue(1).ToString()), Convert.ToInt32(reader.GetValue(2).ToString()), reader.GetValue(3).ToString(), reader.GetValue(4).ToString(), reader.GetValue(5).ToString());
+                temp.Add(b);
+            }
+
+            reader.Close();
+            return temp;
+        }
+
+
         public string[,] getItem(string SQLAbfrage, string table)
         {
             _command.CommandText = "Select COUNT(*) from " + table + ";";
@@ -85,10 +103,15 @@ namespace HotelBuchen
             return temp;
         }
 
+        public void executequerey(string sql)
+        {
+            _command.CommandText = sql;
+            _command.ExecuteNonQuery();
+        }
+
 
         public void CloseDatabase()
         {
-            _command.Connection.Close();
             _con.Close();
         }
     }

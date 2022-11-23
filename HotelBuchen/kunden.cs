@@ -11,6 +11,5 @@ namespace HotelBuchen
         public int id { get; set; }
         public string Name { get; set; }
         public string Passwort { get; set; }
-        public bool Admin { get; set; }
     }
 }

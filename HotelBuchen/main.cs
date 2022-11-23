@@ -35,36 +35,44 @@ namespace HotelBuchen
             panels = new List<Panel> { panel2, panel3 };
 
             getAllHotels();
-            setpage();
+            setpage(hotels);
 
             label2.Text = (aufSeite + 1).ToString();
         }
 
-        private int numberOfMaxPages()
-        {
-            double count = hotels.Count;
+        private int numberOfMaxPages(List<Hotel> Liste)
+        { 
+            if(Liste == null) return 0;
+
+            double count = Liste.Count;
             count = Math.Round(count/2);
             return Convert.ToInt32(count);
         }
 
 
-        private void setpage()
+        private void setpage(List<Hotel> Liste)
         {
             for (int i = 0; i < panels.Count; i++)
             {
                 panels[i].Controls.Clear();
             }
-
-            for (int i = 0; i < panels.Count; i++)
+            try
             {
-                if ((aufSeite * 2) + i >= hotels.Count)
+                for (int i = 0; i < panels.Count; i++)
                 {
-                    break;
+                    if ((aufSeite * 2) + i >= hotels.Count)
+                    {
+                        break;
+                    }
+                    Eintrag E = new Eintrag(Liste[(aufSeite * 2) + i], _form) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                    panels[i].Controls.Clear();
+                    panels[i].Controls.Add(E);
+                    E.Show();
                 }
-                Eintrag E = new Eintrag(hotels[(aufSeite * 2) + i]) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-                panels[i].Controls.Clear();
-                panels[i].Controls.Add(E);
-                E.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ein fehler ist aufgetretten, bitte versuchen sie es später noch einmal");
             }
         }
 
@@ -92,22 +100,34 @@ namespace HotelBuchen
         {
             if (aufSeite == 0)
             { }
-            else if (aufSeite > 0)
+            else if (aufSeite > 0 && searchresult == null)
             {
                 aufSeite--;
-                setpage();
+                setpage(hotels);
+                label2.Text = (aufSeite + 1).ToString();
+            }
+            else if (aufSeite > 0 && searchresult != null)
+            {
+                aufSeite--;
+                setpage(searchresult);
                 label2.Text = (aufSeite + 1).ToString();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (aufSeite + 1 == numberOfMaxPages())
+            if (aufSeite + 1 == numberOfMaxPages(hotels) || aufSeite + 1 == numberOfMaxPages(searchresult))
             { }
-            else if (aufSeite < numberOfMaxPages())
+            else if (aufSeite < numberOfMaxPages(hotels) && searchresult == null)
             {
                 aufSeite++;
-                setpage();
+                setpage(hotels);
+                label2.Text = (aufSeite + 1).ToString();
+            }
+            else if (aufSeite < numberOfMaxPages(searchresult) && searchresult != null)
+            {
+                aufSeite++;
+                setpage(searchresult);
                 label2.Text = (aufSeite + 1).ToString();
             }
         }
@@ -118,6 +138,99 @@ namespace HotelBuchen
         {
             _form.db.CloseDatabase();
             Environment.Exit(1);
+        }
+
+
+        public List<Hotel> Searchtags(string tag, List<Hotel> currentsearchresuls = null)
+        {
+            if (currentsearchresuls != null)
+            {
+                switch (tag)
+                {
+                    case "Pets":
+                        return currentsearchresuls.FindAll(x => x.Pets == true);
+
+                    case "familyfriendly":
+                        return currentsearchresuls.FindAll(x => x.familyfriendly == true);
+
+                    case "Wlan":
+                        return currentsearchresuls.FindAll(x => x.Wlan == true);
+
+                    case "Rauchen":
+                        return currentsearchresuls.FindAll(x => x.Rauchen == true);
+
+                    case "costsup":
+                        return currentsearchresuls.OrderBy(x => x.cost).ToList();
+
+                    case "costsdown":
+                        return currentsearchresuls.OrderByDescending(x => x.cost).ToList(); ;
+
+                    default:
+                        return null;
+                }
+            }
+            else
+            {
+                switch (tag)
+                {
+                    case "Pets":
+                        return hotels.FindAll(x => x.Pets == true);
+
+                    case "familyfriendly":
+                        return hotels.FindAll(x => x.familyfriendly == true);
+
+                    case "Wlan":
+                        return hotels.FindAll(x => x.Wlan == true);
+
+                    case "Rauchen":
+                        return hotels.FindAll(x => x.Rauchen == true);
+
+                    case "costsup":
+                        return hotels.OrderBy(x => x.cost).ToList();
+
+                    case "costsdown":
+                        return hotels.OrderByDescending(x => x.cost).ToList();
+
+                    default:
+                        return null;
+                }
+            }
+        }
+
+
+        private void radioButton_Click(object sender, EventArgs e)
+        {
+            aufSeite = 0;
+            RadioButton r = (RadioButton)sender;
+            searchresult = Searchtags(r.Tag.ToString(), searchresult);
+            setpage(searchresult);
+            label2.Text = (aufSeite + 1).ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            searchresult = null;
+            aufSeite = 0;
+            foreach (Control clt in Controls)
+            {
+                if (clt is RadioButton)
+                {
+                    RadioButton chk = (RadioButton)clt;
+                    chk.Checked = false;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            numberOfMaxPages(hotels);
+            setpage(hotels);
+            label2.Text = (aufSeite + 1).ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

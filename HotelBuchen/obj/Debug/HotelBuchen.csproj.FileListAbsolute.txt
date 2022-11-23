@@ -23,3 +23,5 @@ C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.csproj.
 C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.exe
 C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.pdb
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.Eintrag.resources
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.fulleintrag.resources
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.meinkonto.resources

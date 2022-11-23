@@ -14,6 +14,8 @@ namespace HotelBuchen
     {
         public Databank db;
 
+        public kunden kunde;
+
         public Form1()
         {
             InitializeComponent();
@@ -40,8 +42,7 @@ namespace HotelBuchen
                             k.id = Convert.ToInt32(kunde[i, 0]);
                             k.Name = kunde[1, i];
                             k.Passwort = kunde[2, i];
-                            //k.Admin = Convert.ToBoolean(kunde[2,i]);
-
+                            this.kunde = k;
                             main main = new main(this,k);
                             main.Show();
                             this.Hide();
