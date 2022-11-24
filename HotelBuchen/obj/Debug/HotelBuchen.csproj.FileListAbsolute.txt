@@ -25,3 +25,5 @@ C:\Users\gaimn\Documents\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.pdb
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.Eintrag.resources
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.fulleintrag.resources
 E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.meinkonto.resources
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.regForm.resources
+E:\codeprojects\schoolprojects\hotelseite\HotelBuchen\Hotel-Booking\HotelBuchen\obj\Debug\HotelBuchen.bewertungschreiben.resources

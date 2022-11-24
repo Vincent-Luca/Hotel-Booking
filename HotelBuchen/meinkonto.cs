@@ -16,16 +16,18 @@ namespace HotelBuchen
         private kunden kunde;
         private Form1 _form;
         private bool passopen = false;
+        private main mainform;
 
-        public meinkonto(kunden kunde, Form1 form)
+        public meinkonto(kunden kunde, Form1 form, main mainform)
         {
             InitializeComponent();
             this.kunde = kunde;
             this._form = form;
+            this.mainform = mainform;
 
             List<Bewertung> bewertung = _form.db.GetBewertungs("Select distinct(BWID),Kundendaten.KID, Bewertungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Bewertungen.Bewertungen from Bewertungen, Kundendaten, Wohnungen where Kundendaten.KID = "+kunde.id.ToString()+" and Kundendaten.KID = Bewertungen.KID AND Wohnungen.WID = Bewertungen.WID;");
             populatebewertungen(bewertung);
-            List<Buchungen> buchungens = _form.db.GetBuchungen("Select Distinct(Buchungen.BID), Kundendaten.KID, Wohnungen.WID, Wohnungen.Namen , Kundendaten.Benutzername, Buchungen.Startdate, Buchungen.Enddate From Buchungen, Wohnungen, Kundendaten Where Kundendaten.KID = "+kunde.id.ToString()+" and Wohnungen.WID = Buchungen.WID;");
+            List<Buchungen> buchungens = _form.db.GetBuchungen("Select Distinct(Buchungen.BID), Kundendaten.KID, Wohnungen.WID, Wohnungen.Namen , Kundendaten.Benutzername, Buchungen.Startdate, Buchungen.Enddate From Buchungen, Wohnungen, Kundendaten Where Kundendaten.KID = "+kunde.id.ToString()+ " and Wohnungen.WID = Buchungen.WID AND Kundendaten.KID = Buchungen.KID;");
             populatebuchungen(buchungens);
             
             passwordchar();
@@ -76,6 +78,8 @@ namespace HotelBuchen
             if (!String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text) && !String.IsNullOrEmpty(textBox3.Text) && textBox1.Text == kunde.Name && textBox3.Text == kunde.Passwort)
             {
                 _form.db.executequerey("Update Kundendaten Set Benutzername = '"+textBox2.Text+"' where KID = "+kunde.id+";");
+                kunde.Name = textBox2.Text;
+                label13.Text = kunde.Name;
 
                 
                 textBox1.Text = "";
@@ -90,8 +94,10 @@ namespace HotelBuchen
         {
             if (!String.IsNullOrEmpty(textBox4.Text) && !String.IsNullOrEmpty(textBox5.Text) && !String.IsNullOrEmpty(textBox6.Text) && textBox4.Text == kunde.Passwort && textBox5.Text == textBox6.Text)
             {
-                _form.db.executequerey("Update Kundendaten Set Passwort = '" + textBox2.Text + "' where KID = " + kunde.id + ";");
+                _form.db.executequerey("Update Kundendaten Set Passwort = '" + textBox6.Text + "' where KID = " + kunde.id + ";");
 
+                kunde.Passwort = textBox6.Text;
+                passwordchar();
 
                 textBox4.Text = "";
                 textBox5.Text = "";
@@ -119,6 +125,12 @@ namespace HotelBuchen
                 passwordchar();
                 passopen = false;
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            mainform.Show();
+            this.Hide();
         }
     }
 }

@@ -71,6 +71,41 @@ namespace HotelBuchen
             return temp;
         }
 
+        public bool isopen(string name)
+        {
+            _command.CommandText = "Select COUNT(*) from Kundendaten;";
+            int rowcount = 0;
+            reader = _command.ExecuteReader();
+            while (reader.Read())
+            {
+                rowcount = Convert.ToInt32(reader.GetValue(0));
+            }
+            reader.Close();
+
+
+
+            _command.CommandText = "Select * from Kundendaten where Benutzername = '"+name+"';";
+            reader = _command.ExecuteReader();
+            string[,] temp = new string[rowcount, reader.FieldCount];
+
+            int j = 0;
+            while (reader.Read())
+            {
+                for (int i = 0; i < temp.GetLength(1); i++)
+                {
+                    temp[j, i] = reader.GetValue(i).ToString();
+                }
+                j++;
+            }
+
+            reader.Close();
+            if (!String.IsNullOrEmpty(temp[0, 0])) 
+                return false;
+
+            else 
+                return true;
+        }
+
 
         public List<Buchungen> GetBuchungen(string sql)
         {

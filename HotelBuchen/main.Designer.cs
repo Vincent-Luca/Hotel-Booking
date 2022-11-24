@@ -46,6 +46,7 @@ namespace HotelBuchen
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,11 +236,23 @@ namespace HotelBuchen
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(13, 369);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(307, 69);
+            this.button3.Size = new System.Drawing.Size(134, 69);
             this.button3.TabIndex = 13;
             this.button3.Text = "Mein Konto";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.PowderBlue;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(177, 369);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(134, 69);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "Ausloggen";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // main
             // 
@@ -247,6 +260,7 @@ namespace HotelBuchen
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.radioButton6);
@@ -286,5 +300,6 @@ namespace HotelBuchen
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
     }
 }

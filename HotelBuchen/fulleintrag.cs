@@ -18,7 +18,7 @@ namespace HotelBuchen
 
         private Form1 _form;
 
-        List<Bewertung> bewetungen;
+        private List<Bewertung> bewetungen;
 
         public fulleintrag(Hotel info, Form1 form)
         {
@@ -26,12 +26,23 @@ namespace HotelBuchen
             this.info = info;
             this._form = form;
             setinfo();
+            List<Buchungen> temp = _form.db.GetBuchungen("SELECT DISTINCT (Buchungen.BID), Kundendaten.KID, Wohnungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Buchungen.Startdate, Buchungen.Enddate FROM Buchungen, Wohnungen, Kundendaten WHERE Kundendaten.KID = "+_form.kunde.id.ToString()+ " and Wohnungen.WID = "+info.ID.ToString()+" and Wohnungen.WID = Buchungen.WID AND  Kundendaten.KID = Buchungen.KID;");
 
-            bewetungen = _form.db.GetBewertungs("Select distinct(BWID),Kundendaten.KID, Bewertungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Bewertungen.Bewertungen from Bewertungen, Kundendaten, Wohnungen where Bewertungen.WID = " + info.ID.ToString()+ " and Kundendaten.KID = Bewertungen.KID AND Wohnungen.WID = Bewertungen.WID;");
+            if (!(temp.Count == 0))
+            {
+                button2.Visible = true;
+            }
+            getbewertungen();
             populatdatagridview();
         }
 
-        private void populatdatagridview()
+        public void getbewertungen()
+        {
+            bewetungen = _form.db.GetBewertungs("Select distinct(BWID),Kundendaten.KID, Bewertungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Bewertungen.Bewertungen from Bewertungen, Kundendaten, Wohnungen where Bewertungen.WID = " + info.ID.ToString() + " and Kundendaten.KID = Bewertungen.KID AND Wohnungen.WID = Bewertungen.WID;");
+
+        }
+
+        public void populatdatagridview()
         {
             for (int i = 0; i < bewetungen.Count; i++)
             {
@@ -61,7 +72,9 @@ namespace HotelBuchen
             }
             else if (dateTimePicker1.Value < dateTimePicker2.Value)
             {
-                _form.db.executequerey("Insert into Buchungen(KID,WID,Startdate,Enddate) Values(" + _form.kunde.id.ToString() + "," + info.ID.ToString() + ",'"+dateTimePicker1.Value.ToString()+ "','"+dateTimePicker2.Value.ToString()+"');");
+                _form.db.executequerey("Insert into Buchungen(KID,WID,Startdate,Enddate) Values(" + _form.kunde.id.ToString() + "," + info.ID.ToString() + ",'"+ dateTimePicker1.Value.ToShortDateString().ToString() + "','"+ dateTimePicker2.Value.ToShortDateString().ToString() + "');");
+                MessageBox.Show("Hotel gebucht!");
+                this.Close();
             }
         }
 
@@ -71,6 +84,24 @@ namespace HotelBuchen
             checkBox2.Checked = info.Wlan;
             checkBox3.Checked = info.Rauchen;
             checkBox4.Checked = info.Pets;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            List<Bewertung> temp = _form.db.GetBewertungs("SELECT DISTINCT (BWID) AS ers, Kundendaten.KID, Bewertungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Bewertungen.Bewertungen FROM Bewertungen, Kundendaten, Wohnungen WHERE (((Kundendaten.KID)=[Bewertungen].[KID]) AND Kundendaten.KID = "+_form.kunde.id+" AND ((Bewertungen.WID)="+info.ID+") AND ((Wohnungen.WID)=[Bewertungen].[WID]));\r\n");
+            if (!(temp.Count == 0))
+            {
+                MessageBox.Show("Sie haben für dises Hotel schon eine Bewertung geschrieben");
+            }
+            else if (temp.Count == 0)
+            {
+                bewertungschreiben b = new bewertungschreiben(_form, this,this.info);
+                b.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ein fehler ist aufgetretten");
+            }
         }
     }
 }

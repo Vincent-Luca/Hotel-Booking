@@ -16,6 +16,8 @@ namespace HotelBuchen
 
         public kunden kunde;
 
+        private bool loggedin = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace HotelBuchen
                 {
                     MessageBox.Show("felher");
                 }
+                
                 else
                 {
                     for (int i = 0; i < kunde.GetLength(0); i++)
@@ -43,14 +46,26 @@ namespace HotelBuchen
                             k.Name = kunde[i, 1];
                             k.Passwort = kunde[i, 2];
                             this.kunde = k;
+                            loggedin = true;
                             main main = new main(this,k);
                             main.Show();
                             this.Hide();
+
+                            textBox1.Text = "";
+                            textBox2.Text = "";
+
                             break;
                         }
                     }
                 }
-                
+                if (!loggedin)
+                {
+                    MessageBox.Show("etwas ist falsch gelaufen");
+                }
+            }
+            else
+            {
+                MessageBox.Show("etwas ist falsch gelaufen");
             }
         }
 
@@ -58,6 +73,12 @@ namespace HotelBuchen
         {
             db.CloseDatabase();
             Environment.Exit(0);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            regForm r = new regForm(this);
+            r.Show();
         }
     }
 }
