@@ -44,6 +44,7 @@ namespace HotelBuchen
 
         public void populatdatagridview()
         {
+            dataGridView1.Rows.Clear();
             for (int i = 0; i < bewetungen.Count; i++)
             {
                 dataGridView1.Rows.Add(bewetungen[i].Name, bewetungen[i].bewertung);

@@ -23,8 +23,8 @@ namespace HotelBuchen
         {
             if (!String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text) && !String.IsNullOrEmpty(textBox3.Text) && textBox2.Text == textBox3.Text)
             {
-                bool aaaaa = _form.db.isopen(textBox1.Text);
-                if (!aaaaa)
+               
+                if (!_form.db.isopen(textBox1.Text))
                 {
                     MessageBox.Show("Name ist schon vergeben");
                 }

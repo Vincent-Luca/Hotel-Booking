@@ -77,16 +77,23 @@ namespace HotelBuchen
         {
             if (!String.IsNullOrEmpty(textBox1.Text) && !String.IsNullOrEmpty(textBox2.Text) && !String.IsNullOrEmpty(textBox3.Text) && textBox1.Text == kunde.Name && textBox3.Text == kunde.Passwort)
             {
-                _form.db.executequerey("Update Kundendaten Set Benutzername = '"+textBox2.Text+"' where KID = "+kunde.id+";");
-                kunde.Name = textBox2.Text;
-                label13.Text = kunde.Name;
+                if (!_form.db.isopen(textBox1.Text))
+                {
+                    MessageBox.Show("Name ist schon vergeben");
+                }
+                else
+                {
+                    _form.db.executequerey("Update Kundendaten Set Benutzername = '" + textBox2.Text + "' where KID = " + kunde.id + ";");
+                    kunde.Name = textBox2.Text;
+                    label13.Text = kunde.Name;
 
-                
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                panel1.Hide();
-                button2.Visible = true;
+
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    panel1.Hide();
+                    button2.Visible = true;
+                }
             }
         }
 
