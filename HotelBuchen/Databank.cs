@@ -72,6 +72,23 @@ namespace HotelBuchen
         }
 
 
+        public List<Buchungen> GetBuchungen(string sql)
+        {
+            _command.CommandText = sql;
+            reader = _command.ExecuteReader();
+            List<Buchungen> temp = new List<Buchungen>();
+
+            while (reader.Read())
+            {
+                Buchungen b = new Buchungen(Convert.ToInt32(reader.GetValue(0).ToString()),Convert.ToInt32(reader.GetValue(1).ToString()),Convert.ToInt32(reader.GetValue(2).ToString()), reader.GetValue(3).ToString(), reader.GetValue(4).ToString(), reader.GetValue(5).ToString(), reader.GetValue(6).ToString());
+                temp.Add(b);
+            }
+
+            reader.Close();
+            return temp;
+        }
+
+
         public string[,] getItem(string SQLAbfrage, string table)
         {
             _command.CommandText = "Select COUNT(*) from " + table + ";";

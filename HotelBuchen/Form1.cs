@@ -40,8 +40,8 @@ namespace HotelBuchen
                             kunden k = new kunden();
 
                             k.id = Convert.ToInt32(kunde[i, 0]);
-                            k.Name = kunde[1, i];
-                            k.Passwort = kunde[2, i];
+                            k.Name = kunde[i, 1];
+                            k.Passwort = kunde[i, 2];
                             this.kunde = k;
                             main main = new main(this,k);
                             main.Show();

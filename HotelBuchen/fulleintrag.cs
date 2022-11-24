@@ -27,7 +27,7 @@ namespace HotelBuchen
             this._form = form;
             setinfo();
 
-            bewetungen = _form.db.GetBewertungs("Select distinct(BWID),Kundendaten.KID, Bewertungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Bewertungen.Bewertungen from Bewertungen, Kundendaten, Wohnungen where Bewertungen.WID = " + info.ID.ToString()+ " and Bewertungen.KID = Bewertungen.KID AND Wohnungen.WID = Bewertungen.WID;");
+            bewetungen = _form.db.GetBewertungs("Select distinct(BWID),Kundendaten.KID, Bewertungen.WID, Wohnungen.Namen, Kundendaten.Benutzername, Bewertungen.Bewertungen from Bewertungen, Kundendaten, Wohnungen where Bewertungen.WID = " + info.ID.ToString()+ " and Kundendaten.KID = Bewertungen.KID AND Wohnungen.WID = Bewertungen.WID;");
             populatdatagridview();
         }
 

@@ -230,7 +230,9 @@ namespace HotelBuchen
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            meinkonto m = new meinkonto(kunde, _form);
+            m.Show();
+            this.Hide();
         }
     }
 }

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Databank.cs" />
     <Compile Include="Datasets\Bewertung.cs" />
+    <Compile Include="Datasets\Buchungen.cs" />
     <Compile Include="Eintrag.cs">
       <SubType>Form</SubType>
     </Compile>
